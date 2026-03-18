@@ -2,12 +2,17 @@
 
 * {
     scrollbar-width: none;
+    scroll-behavior: smooth;
 }
 
 body {
     margin: 0;
     font-family: "Sour Gummy", sans-serif;
     background-color: #a0886e;
+    cursor: url('cursor.png'), auto;
+}
+
+:hover {
     cursor: url('cursor.png'), auto;
 }
 
@@ -175,32 +180,137 @@ body {
     font-size: 30px;
 }
 
-#kawy {
+#kawy, #ciasta {
     display: flex;
     justify-content: space-evenly;
 }
 
-.kawa {
+#koty {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-evenly;
+}
+
+.kawa, .ciasto, .kot{
     height: auto;
     max-height: 300px;
     width: 30%;
     max-width: 400px;
     border: 4px solid #4e433e;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 1%;
 }
 
-.kawa img {
+.kot {
+    flex: 1 1 calc(50% - 20px);
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1%;
+    align-items: flex-start;
+    max-height: 400px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.kot h2 {
+    flex-basis: 100%;
+    margin-top: 0;
+}
+
+.kawa img, .ciasto img, .kot img {
     aspect-ratio: 1 /1;
     width: 50%;
     max-width: 150px;
     max-height: 150px;
     object-fit: cover;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 3px solid #4e433e;
+    border-radius: 5%;
 }
-.kawa img:hover {
+
+.kot img {
+    order: 1;
+}
+
+.kot p {
+    flex: 1;
+    order: 2;
+}
+
+.kawa img:hover, .ciasto img:hover, .kot img:hover {
+    transform: scale(1.1);
+    transition: all 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+#kontakt {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+#lewa, #prawa {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    gap: 10px;
+    border: 4px solid #4e433e;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 1%;
+    min-width: 0;
+}
+
+input, textarea {
+    padding: 5px;
+    border: 1px solid #4e433e;
+    border-radius: 5px;
+    background: #c6ac90;
+    color: #3c3430;
+    font-family: "Sour Gummy", sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: none;
+}
+
+input::selection, textarea::selection {
+    background-color: #a0886e;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #4e433e;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0 0 5px #4e433e;
+}
+
+#kontakt button {
+    margin-top: 10px;
+    align-self: center;
+    width: 20%;
+    padding: 1%;
+    background-color: #c6ac90;
+    border: 1px solid #4e433e;
+    border-radius: 5px;
+    font-family: "Sour Gummy", sans-serif;
+}
+
+#kontakt button:hover {
+    box-shadow: 0 0 5px #4e433e;
+    background-color: #bd976e;
+    color: #3c3430;
     transform: scale(1.1);
     transition: all 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
 }
@@ -211,16 +321,49 @@ body {
         top: 70%;
     }
 
-    #kawy {
+    #kawy, #ciasta {
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
 
-    .kawa {
+    .kawa, .ciasto, .kot {
         margin-top: 1%;
         margin-bottom: 1%;
         width: 60%;
+    }
+
+    .kot {
+        justify-content: center;
+    }
+
+    .kot img, .kot p {
+        flex-basis: 100%;
+        order: initial;
+    }
+
+    #kontakt {
+        flex-direction: column;
+        gap: 10px;
+        border: 4px solid #4e433e;
+        border-radius: 10px;
+    }
+
+    #lewa, #prawa {
+        flex-basis: 100%;
+        border: none;
+    }
+
+    #lewa {
+        order: 1;
+    }
+
+    #prawa {
+        order: 2;
+    }
+
+    #kontakt button {
+        margin-top: 0;
     }
 }
 
